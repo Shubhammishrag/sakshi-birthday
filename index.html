@@ -14,10 +14,10 @@ body {
   height: 100vh;
   font-family: 'Inter', sans-serif;
   background: radial-gradient(circle at top, #2b1055, #000000);
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   color: #fff;
 }
 
@@ -39,15 +39,17 @@ body {
 
 /* Card */
 .card {
-  width: 90%;
+  width: 92%;
   max-width: 480px;
-  padding: 45px;
+  padding: 40px;
   border-radius: 26px;
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(22px);
   box-shadow: 0 35px 90px rgba(0,0,0,0.8);
   text-align: center;
   animation: enter 1.6s ease;
+  max-height: 92vh;
+  overflow-y: auto;
 }
 
 @keyframes enter {
@@ -57,36 +59,35 @@ body {
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  margin-bottom: 14px;
+  font-size: 30px;
+  margin-bottom: 12px;
 }
 
 p {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.9;
   opacity: 0.96;
 }
 
 button {
-  margin-top: 30px;
-  padding: 14px 40px;
-  font-size: 14px;
+  margin-top: 25px;
+  padding: 12px 36px;
   border: none;
   border-radius: 30px;
   background: linear-gradient(135deg, #ff5f6d, #ffc371);
   color: white;
   cursor: pointer;
-  letter-spacing: 1px;
+  font-size: 14px;
   transition: transform 0.3s;
 }
 
-button:hover { transform: scale(1.07); }
+button:hover { transform: scale(1.06); }
 
 .hidden { display: none; }
 
 /* Countdown */
 #count {
-  font-size: 70px;
+  font-size: 64px;
   font-family: 'Playfair Display', serif;
   animation: pulse 1s infinite;
 }
@@ -97,9 +98,9 @@ button:hover { transform: scale(1.07); }
 
 /* Photo */
 .photo-frame {
-  margin-top: 24px;
+  margin-top: 20px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 18px;
 }
 
 .photo-frame img {
@@ -110,6 +111,30 @@ button:hover { transform: scale(1.07); }
 @keyframes kenburns {
   from { transform: scale(1); }
   to { transform: scale(1.15); }
+}
+
+/* Show More */
+.final-text {
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+}
+
+.final-text.collapsed {
+  max-height: 190px;
+}
+
+.final-text.expanded {
+  max-height: 1000px;
+}
+
+.toggle-btn {
+  margin-top: 15px;
+  padding: 10px 26px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  cursor: pointer;
+  border: none;
 }
 </style>
 </head>
@@ -143,9 +168,7 @@ button:hover { transform: scale(1.07); }
 <!-- STEP 3 -->
 <div id="step3" class="hidden">
   <h1>Almost There 💫</h1>
-  <p>
-    Just one more click before something special 💖
-  </p>
+  <p>Just one more click before something special 💖</p>
   <button onclick="startCountdown()">ONE LAST STEP 🎂</button>
 </div>
 
@@ -157,39 +180,35 @@ button:hover { transform: scale(1.07); }
 
 <!-- FINAL -->
 <div id="final" class="hidden">
-  <h1>Happy Birthday Sakshi 🎂❤️</h1>
-  <p>
-    Today is about you 🌸<br><br>
+  <h1>Happiesttt Birthdayyyy Sakshiiiii 🎂❤️</h1>
 
-    About your smile that feels comforting 😊<br>
-    Just I want to say that when we met for the first time,<br><br>
+  <div class="final-text collapsed" id="finalText">
+    <p>
+      Today is about you 🌸<br><br>
 
-    we looked good together as a friend<br>
-    or whatever you think — I accept 💙<br><br>
+      About your smile that feels comforting 😊<br>
+      Just I want to say that when we met for the first time,<br><br>
 
-    your saamne se message na karna,<br>
-    roast karna and bachhon type reels share karna 😜<br><br>
+      we looked good together as a friend<br>
+      or whatever you think — I accept 💙<br><br>
 
-    it feels that you are a part of my life,<br>
-    and all I want to say on your birthday is — keep smiling ✨<br>
+      your saamne se message na karna,<br>
+      roast karna and bachhon type reels share karna 😜<br><br>
 
-    spend your day nicely, enjoy with your family,<br>
-    and remember me a little bit also 💕<br><br>
+      it feels that you are a part of my life,<br>
+      and all I want to say on your birthday is — keep smiling ✨<br>
 
-    and at last I just want to say<br>
-    a very happiest birthday to youuu.... 😘💕💕<br>
+      spend your day nicely, enjoy with your family,<br>
+      and remember me a little bit also 💕<br><br>
 
-    and yes — I remembered your birthday this time with date,<br>
-    so don’t fight with me from now 😌✨<br><br>
+      and at last I just want to say<br>
+      a very happiest birthday to youuu.... 😘💕💕<br><br>
 
-    I don’t know how you’ll like all this,<br>
-    but I tried… hope you like it 💖<br>
+      Happiest birthdayyyyyy cutieeeeeee 😘❤️💕
+    </p>
+  </div>
 
-    agar nahi bhi achhi lagi toh<br>
-    jabardasti achhi lagwao 😁<br><br>
-
-    Happiest birthdayyyyyy cutieeeeeee 😘❤️💕
-  </p>
+  <button class="toggle-btn" onclick="toggleText()">Show more 💖</button>
 
   <div class="photo-frame">
     <img id="slide" src="photo1.jpg">
@@ -212,20 +231,20 @@ setInterval(() => {
 }, 500);
 
 /* Steps */
-function nextStep(step){
-  document.getElementById("step"+step).classList.add("hidden");
-  document.getElementById("step"+(step+1)).classList.remove("hidden");
+function nextStep(step) {
+  document.getElementById("step" + step).classList.add("hidden");
+  document.getElementById("step" + (step + 1)).classList.remove("hidden");
 }
 
 /* Countdown */
-function startCountdown(){
+function startCountdown() {
   step3.classList.add("hidden");
   countdown.classList.remove("hidden");
   let n = 5;
   const timer = setInterval(() => {
     count.innerText = n;
     n--;
-    if(n < 0){
+    if (n < 0) {
       clearInterval(timer);
       countdown.classList.add("hidden");
       final.classList.remove("hidden");
@@ -234,10 +253,25 @@ function startCountdown(){
   }, 1000);
 }
 
+/* Show More */
+function toggleText() {
+  const text = document.getElementById("finalText");
+  const btn = event.target;
+  if (text.classList.contains("collapsed")) {
+    text.classList.remove("collapsed");
+    text.classList.add("expanded");
+    btn.innerText = "Show less 💫";
+  } else {
+    text.classList.remove("expanded");
+    text.classList.add("collapsed");
+    btn.innerText = "Show more 💖";
+  }
+}
+
 /* Slideshow */
 const photos = ["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
 let idx = 0;
-function slideshow(){
+function slideshow() {
   setInterval(() => {
     idx = (idx + 1) % photos.length;
     slide.src = photos[idx];
