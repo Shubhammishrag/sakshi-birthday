@@ -2,243 +2,184 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Sakshi 💖</title>
+<title>Happy Birthday Sakshi ✨</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
 }
 
-.card {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  max-width: 420px;
-  animation: pop 0.8s ease;
-  z-index: 10;
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-h1 { color: #ff4d6d; }
-p { color: #555; font-size: 18px; line-height: 1.6; }
+/* Glass Card */
+.card {
+  width: 90%;
+  max-width: 420px;
+  padding: 35px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  text-align: center;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  color: #ff4d6d;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #333;
+  font-size: 17px;
+  line-height: 1.7;
+}
 
 button {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 16px;
+  margin-top: 25px;
+  padding: 12px 35px;
   border: none;
   border-radius: 30px;
   background: #ff4d6d;
   color: white;
+  font-size: 15px;
   cursor: pointer;
-}
-button:hover { background: #e63950; }
-
-.hidden { display: none; }
-
-@keyframes pop {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  transition: 0.3s;
 }
 
-/* Typing cursor */
-.cursor {
-  display: inline-block;
-  animation: blink 1s infinite;
+button:hover {
+  transform: scale(1.05);
+  background: #e63950;
 }
-@keyframes blink { 50% { opacity: 0; } }
 
-/* Floating animations */
-.heart, .balloon {
+.hidden {
+  display: none;
+}
+
+/* Photo */
+.photo-frame {
+  margin-top: 20px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.photo-frame img {
+  width: 100%;
+  animation: zoomFade 4s ease-in-out infinite;
+}
+
+@keyframes zoomFade {
+  0% { transform: scale(1); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0; }
+}
+
+/* Floating light particles */
+.light {
   position: absolute;
-  font-size: 26px;
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: float 6s linear infinite;
 }
-
-.heart { animation: float 4s linear infinite; }
-.balloon { bottom: -100px; animation: rise 6s linear infinite; }
 
 @keyframes float {
   from { transform: translateY(100vh); }
   to { transform: translateY(-10vh); }
-}
-
-@keyframes rise {
-  to { transform: translateY(-120vh); }
-}
-
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  animation: fall 3s linear forwards;
-}
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
-}
-
-/* Countdown */
-#count {
-  font-size: 60px;
-  color: #ff4d6d;
-}
-
-/* Slideshow */
-.slideshow img {
-  width: 100%;
-  border-radius: 15px;
-  margin-top: 15px;
 }
 </style>
 </head>
 
 <body>
 
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-</audio>
-
 <div class="card">
 
 <!-- STEP 1 -->
 <div id="step1">
-  <h1>Hey Sakshi 😊</h1>
-  <p>I made something special just for you 💝</p>
-  <button onclick="goStep2()">Click here for surprise 🎁</button>
+  <h1>Hey Sakshi 🌸</h1>
+  <p>
+    I wanted to do something different this time.<br>
+    Something calm, meaningful, and just for you.
+  </p>
+  <button onclick="nextStep(1)">Continue ✨</button>
 </div>
 
-<!-- STEP 2 (Typing) -->
+<!-- STEP 2 -->
 <div id="step2" class="hidden">
-  <h1>✨ Just a moment ✨</h1>
-  <p id="typingText"></p>
-  <button onclick="goStep3()">Continue 💫</button>
+  <h1>A Small Thought 💭</h1>
+  <p>
+    Birthdays aren’t just about growing older.<br>
+    They’re about celebrating the person you are,<br>
+    the smiles you give, and the warmth you bring.
+  </p>
+  <button onclick="nextStep(2)">One More 💖</button>
 </div>
 
 <!-- STEP 3 -->
 <div id="step3" class="hidden">
-  <h1>💖 Almost there 💖</h1>
+  <h1>For You 💐</h1>
   <p>
-    This isn’t just a birthday wish,<br>
-    it’s something made from the heart 🌸
+    May your days be gentle,<br>
+    your dreams be fearless,<br>
+    and your heart always feel valued.
   </p>
-  <button onclick="startCountdown()">Final Surprise 🎂</button>
-</div>
-
-<!-- COUNTDOWN -->
-<div id="countdown" class="hidden">
-  <h1>🎉 Get Ready 🎉</h1>
-  <p>Final surprise in...</p>
-  <h1 id="count">5</h1>
+  <button onclick="nextStep(3)">See Something Special 📸</button>
 </div>
 
 <!-- FINAL -->
 <div id="final" class="hidden">
-  <h1>🎂 Happy Birthday Sakshi 🎂</h1>
+  <h1>Happy Birthday Sakshi 🎂</h1>
   <p>
-    May your smile always shine ✨<br>
-    May happiness follow you everywhere 💕<br>
-    You truly deserve all the love 💖
+    You’re effortlessly special — not because you try,<br>
+    but because you’re simply you.<br><br>
+    May life always surprise you with reasons to smile,<br>
+    and may you always know how deeply appreciated you are.
   </p>
 
-  <div class="slideshow">
+  <div class="photo-frame">
     <img id="slide" src="photo1.jpg">
   </div>
 
-  <p>— From Shubham 💙</p>
+  <p style="margin-top:15px;">— From Shubham 💙</p>
 </div>
 
 </div>
 
 <script>
-/* Typing effect */
-const text = "Someone remembered your special day...\nSomeone wanted to make you smile...\nBecause you truly matter 💖";
-let i = 0;
-
-function goStep2() {
-  step1.classList.add("hidden");
-  step2.classList.remove("hidden");
-  typeEffect();
-}
-
-function typeEffect() {
-  if (i < text.length) {
-    typingText.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeEffect, 50);
-  }
-}
-
-function goStep3() {
-  step2.classList.add("hidden");
-  step3.classList.remove("hidden");
-}
-
-/* Countdown */
-function startCountdown() {
-  step3.classList.add("hidden");
-  countdown.classList.remove("hidden");
-  let num = 5;
-  const timer = setInterval(() => {
-    count.innerText = num;
-    num--;
-    if (num < 0) {
-      clearInterval(timer);
-      countdown.classList.add("hidden");
-      finalStep();
-    }
-  }, 1000);
-}
-
-/* Final */
-function finalStep() {
-  final.classList.remove("hidden");
-  music.play();
-  hearts();
-  balloons();
-  confetti();
-  slideshow();
-}
-
-/* Effects */
-function hearts() {
-  setInterval(() => {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "❤️";
-    h.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 4000);
-  }, 300);
-}
-
-function balloons() {
-  setInterval(() => {
-    const b = document.createElement("div");
-    b.className = "balloon";
-    b.innerHTML = "🎈";
-    b.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(b);
-    setTimeout(() => b.remove(), 6000);
-  }, 800);
-}
-
-function confetti() {
-  for (let i = 0; i < 120; i++) {
-    const c = document.createElement("div");
-    c.className = "confetti";
-    c.style.left = Math.random() * 100 + "vw";
-    c.style.top = "-10px";
-    c.style.background = `hsl(${Math.random()*360},100%,50%)`;
-    document.body.appendChild(c);
-    setTimeout(() => c.remove(), 3000);
+/* Steps */
+function nextStep(step) {
+  document.getElementById("step" + step).classList.add("hidden");
+  if(step < 3) {
+    document.getElementById("step" + (step + 1)).classList.remove("hidden");
+  } else {
+    document.getElementById("final").classList.remove("hidden");
+    startLights();
+    slideshow();
   }
 }
 
@@ -250,7 +191,19 @@ function slideshow() {
   setInterval(() => {
     index = (index + 1) % photos.length;
     document.getElementById("slide").src = photos[index];
-  }, 2500);
+  }, 4000);
+}
+
+/* Floating lights */
+function startLights() {
+  setInterval(() => {
+    const light = document.createElement("div");
+    light.className = "light";
+    light.style.left = Math.random() * 100 + "vw";
+    light.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(light);
+    setTimeout(() => light.remove(), 8000);
+  }, 400);
 }
 </script>
 
