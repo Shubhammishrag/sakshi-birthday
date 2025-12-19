@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happiesttt Birthdayyyyy Sakshiiiiii 😼❤️</title>
+<title>Happy Birthday Sakshi 🎉❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -13,128 +13,139 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #2b1055, #000000);
+  background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fbc2eb);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   color: #fff;
 }
 
-/* Floating lights */
-.light {
+/* 🎈 BALLOONS */
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  font-size: 40px;
+  animation: floatBalloon linear infinite;
+}
+@keyframes floatBalloon {
+  to { transform: translateY(-130vh); }
+}
+
+/* ✨ SPARKLES */
+.sparkle {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.9);
   border-radius: 50%;
-  animation: floatUp linear infinite;
+  animation: sparkleMove linear infinite;
 }
-
-@keyframes floatUp {
+@keyframes sparkleMove {
   from { transform: translateY(100vh); opacity: 0; }
   30% { opacity: 1; }
   to { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Card */
+/* 🎆 FIREWORKS */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1.2s ease-out forwards;
+}
+@keyframes explode {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(25); opacity: 0; }
+}
+
+/* 🎂 CAKE */
+.cake {
+  font-size: 60px;
+  animation: cakeBounce 2s infinite;
+  margin-top: 10px;
+}
+@keyframes cakeBounce {
+  50% { transform: translateY(-10px); }
+}
+
+/* 🎂 CARD */
 .card {
   width: 92%;
   max-width: 480px;
   padding: 40px;
-  border-radius: 26px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(22px);
-  box-shadow: 0 35px 90px rgba(0,0,0,0.8);
+  border-radius: 28px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 35px 90px rgba(0,0,0,0.35);
   text-align: center;
-  animation: enter 1.6s ease;
   max-height: 92vh;
   overflow-y: auto;
-}
-
-@keyframes enter {
-  from { opacity: 0; transform: translateY(60px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 30px;
-  margin-bottom: 12px;
 }
 
 p {
   font-size: 15px;
   line-height: 1.9;
-  opacity: 0.96;
 }
 
 button {
   margin-top: 25px;
   padding: 12px 36px;
-  border: none;
   border-radius: 30px;
   background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  border: none;
   color: white;
   cursor: pointer;
-  font-size: 14px;
-  transition: transform 0.3s;
 }
-
 button:hover { transform: scale(1.06); }
 
 .hidden { display: none; }
 
-/* Countdown */
+/* COUNTDOWN */
 #count {
   font-size: 64px;
-  font-family: 'Playfair Display', serif;
   animation: pulse 1s infinite;
 }
-
 @keyframes pulse {
   50% { transform: scale(1.15); }
 }
 
-/* Photo */
+/* PHOTO */
 .photo-frame {
   margin-top: 20px;
-  overflow: hidden;
   border-radius: 18px;
+  overflow: hidden;
 }
-
 .photo-frame img {
   width: 100%;
-  animation: kenburns 7s ease-in-out infinite;
+  animation: kenburns 7s infinite;
 }
-
 @keyframes kenburns {
-  from { transform: scale(1); }
   to { transform: scale(1.15); }
 }
 
-/* Show More */
+/* SHOW MORE */
 .final-text {
   overflow: hidden;
   transition: max-height 0.6s ease;
 }
-
-.final-text.collapsed {
-  max-height: 190px;
-}
-
-.final-text.expanded {
-  max-height: 1000px;
-}
+.final-text.collapsed { max-height: 190px; }
+.final-text.expanded { max-height: 1200px; }
 
 .toggle-btn {
   margin-top: 15px;
   padding: 10px 26px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.35);
+  border: none;
   color: #fff;
   cursor: pointer;
-  border: none;
 }
 </style>
 </head>
@@ -145,17 +156,14 @@ button:hover { transform: scale(1.06); }
 
 <!-- STEP 1 -->
 <div id="step1">
-  <h1>Hey Birthday gurll... 😘❤️</h1>
-  <p>
-    I don’t know how to say this simply,<br>
-    so I chose to say it beautifully 🌸
-  </p>
-  <button onclick="nextStep(1)">START ✨</button>
+  <h1>Hey Birthday gurll 🎉❤️</h1>
+  <p>I wanted to make today extra special just for you 🌸</p>
+  <button onclick="nextStep(1)">START 🎂</button>
 </div>
 
 <!-- STEP 2 -->
 <div id="step2" class="hidden">
-  <h1>Life lesson you should take from me 😎🌙</h1>
+  <h1>Life lesson 😎🌙</h1>
   <p>
     If someone’s birthday arrives 🎂<br>
     and his or her friend is not with you,<br>
@@ -168,44 +176,47 @@ button:hover { transform: scale(1.06); }
 <!-- STEP 3 -->
 <div id="step3" class="hidden">
   <h1>Almost There 💫</h1>
-  <p>Just one more click before something special 💖</p>
-  <button onclick="startCountdown()">ONE LAST STEP 🎂</button>
+  <p>Just one more click before celebration 🎊</p>
+  <button onclick="startCountdown()">FINAL STEP 🎁</button>
 </div>
 
 <!-- COUNTDOWN -->
 <div id="countdown" class="hidden">
-  <p>For someone special 💕</p>
+  <p>Celebration starts in… 🎉</p>
   <div id="count">5</div>
 </div>
 
 <!-- FINAL -->
 <div id="final" class="hidden">
-  <h1>Happiesttt Birthdayyyy Sakshiiiii 🎂❤️</h1>
+  <h1>Happiesttt Birthdayyyy Sakshi Madam 🎂❤️</h1>
+
+  <div class="cake">🎂✨</div>
 
   <div class="final-text collapsed" id="finalText">
     <p>
       Today is about you 🌸<br><br>
 
       About your smile that feels comforting 😊<br>
-      Just I want to say that when we met for the first time,<br>
+      Just I want to say that when we met for the first time,<br><br>
 
       we looked good together as a friend<br>
-      or whatever you think — I accept 💙<br>
+      or whatever you think — I accept 💙<br><br>
 
       your saamne se message na karna,<br>
-      roast karna and bachhon type reels share karna 😜<br>
+      roast karna and bachhon type reels share karna 😜<br><br>
 
       it feels that you are a part of my life,<br>
-      and all I want to say on your birthday is — keep smiling ✨<br>
+      and all I want to say on your birthday is — keep smiling ✨<br><br>
 
       spend your day nicely, enjoy with your family,<br>
-      and remember me a little bit also 💕<br>
+      and remember me a little bit also 💕<br><br>
 
       and at last I just want to say<br>
-      a very happiest birthday to youuu.... 😘💕💕<br>
+      a very happiest birthday to youuu.... 😘💕💕<br><br>
 
-     I hope you like this but in case you dont like<br>
-      jabardasti accha lagwao bs mujhe nhi pata kuch<br> <br>
+      I hope you like this but in case you don’t like,<br>
+      jabardasti accha lagwao 😌<br>
+      bs mujhe nahi pata kuch 💭<br><br>
 
       Happiest birthdayyyyyy cutieeeeeee 😘❤️💕
     </p>
@@ -217,68 +228,85 @@ button:hover { transform: scale(1.06); }
     <img id="slide" src="photo1.jpg">
   </div>
 
-  <p style="margin-top:20px;">— With care, Shubham 💙</p>
+  <p>— shubhhh 💙</p>
 </div>
 
 </div>
 
 <script>
-/* Floating lights */
+/* 🎈 Balloons */
 setInterval(() => {
-  const l = document.createElement("div");
-  l.className = "light";
-  l.style.left = Math.random() * 100 + "vw";
-  l.style.animationDuration = (6 + Math.random() * 6) + "s";
-  document.body.appendChild(l);
-  setTimeout(() => l.remove(), 12000);
-}, 500);
+  const b = document.createElement("div");
+  b.className = "balloon";
+  b.innerText = ["🎈","🎉","🎁"][Math.floor(Math.random()*3)];
+  b.style.left = Math.random()*100+"vw";
+  b.style.animationDuration = (8+Math.random()*6)+"s";
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),14000);
+},1200);
+
+/* ✨ Sparkles */
+setInterval(() => {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random()*100+"vw";
+  s.style.animationDuration = (6+Math.random()*6)+"s";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),12000);
+},500);
+
+/* 🎆 Fireworks */
+function fireworks(){
+  for(let i=0;i<15;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*60+"vh";
+    f.style.background=`hsl(${Math.random()*360},100%,60%)`;
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1200);
+  }
+}
 
 /* Steps */
-function nextStep(step) {
-  document.getElementById("step" + step).classList.add("hidden");
-  document.getElementById("step" + (step + 1)).classList.remove("hidden");
+function nextStep(step){
+  document.getElementById("step"+step).classList.add("hidden");
+  document.getElementById("step"+(step+1)).classList.remove("hidden");
 }
 
 /* Countdown */
-function startCountdown() {
+function startCountdown(){
   step3.classList.add("hidden");
   countdown.classList.remove("hidden");
-  let n = 5;
-  const timer = setInterval(() => {
-    count.innerText = n;
+  let n=5;
+  const timer=setInterval(()=>{
+    count.innerText=n;
     n--;
-    if (n < 0) {
+    if(n<0){
       clearInterval(timer);
       countdown.classList.add("hidden");
       final.classList.remove("hidden");
       slideshow();
+      setInterval(fireworks,2000);
     }
-  }, 1000);
+  },1000);
 }
 
-/* Show More */
-function toggleText() {
-  const text = document.getElementById("finalText");
-  const btn = event.target;
-  if (text.classList.contains("collapsed")) {
-    text.classList.remove("collapsed");
-    text.classList.add("expanded");
-    btn.innerText = "Show less 💫";
-  } else {
-    text.classList.remove("expanded");
-    text.classList.add("collapsed");
-    btn.innerText = "Show more 💖";
-  }
+/* Show more */
+function toggleText(){
+  const t=document.getElementById("finalText");
+  t.classList.toggle("expanded");
+  t.classList.toggle("collapsed");
 }
 
 /* Slideshow */
-const photos = ["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
-let idx = 0;
-function slideshow() {
-  setInterval(() => {
-    idx = (idx + 1) % photos.length;
-    slide.src = photos[idx];
-  }, 5000);
+const photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg"];
+let idx=0;
+function slideshow(){
+  setInterval(()=>{
+    idx=(idx+1)%photos.length;
+    slide.src=photos[idx];
+  },5000);
 }
 </script>
 
