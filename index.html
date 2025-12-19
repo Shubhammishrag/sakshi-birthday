@@ -2,241 +2,217 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Sakshi ✨</title>
+<title>Happy Birthday Sakshi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #c2e9fb);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #1b2735, #090a0f);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 
-/* Gradient animation */
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Floating blobs */
-.blob {
+/* STAR BACKGROUND */
+.star {
   position: absolute;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.1));
-  border-radius: 50%;
-  filter: blur(40px);
-  animation: blobMove 18s infinite alternate ease-in-out;
+  width: 2px;
+  height: 2px;
+  background: white;
+  opacity: 0.8;
+  animation: starMove linear infinite;
 }
 
-.blob:nth-child(1) {
-  top: -100px;
-  left: -120px;
+@keyframes starMove {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
 }
 
-.blob:nth-child(2) {
-  bottom: -120px;
-  right: -100px;
-  animation-delay: 4s;
-}
-
-@keyframes blobMove {
-  from { transform: translate(0,0); }
-  to { transform: translate(120px,80px); }
-}
-
-/* Light particles */
-.particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
-  animation: floatParticle 10s linear infinite;
-}
-
-@keyframes floatParticle {
-  from { transform: translateY(100vh); opacity: 0; }
-  20% { opacity: 1; }
-  to { transform: translateY(-10vh); opacity: 0; }
-}
-
-/* Card */
+/* CARD */
 .card {
   width: 90%;
-  max-width: 420px;
-  padding: 35px;
-  border-radius: 25px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  max-width: 460px;
+  padding: 45px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.6);
   text-align: center;
-  animation: fadeIn 1.2s ease;
-  z-index: 10;
+  animation: enter 1.4s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+@keyframes enter {
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
-  color: #ff4d6d;
-  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  margin-bottom: 15px;
 }
 
 p {
-  color: #333;
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.9;
 }
 
 button {
-  margin-top: 25px;
-  padding: 12px 35px;
+  margin-top: 28px;
+  padding: 14px 36px;
+  font-size: 14px;
   border: none;
   border-radius: 30px;
-  background: #ff4d6d;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
   color: white;
-  font-size: 15px;
   cursor: pointer;
-  transition: 0.3s;
+  letter-spacing: 1px;
+  transition: transform 0.3s;
 }
 
-button:hover {
-  transform: scale(1.05);
-  background: #e63950;
+button:hover { transform: scale(1.05); }
+
+.hidden { display: none; }
+
+/* COUNTDOWN */
+#count {
+  font-size: 72px;
+  font-family: 'Playfair Display', serif;
+  animation: pulse 1s infinite;
 }
 
-.hidden {
-  display: none;
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
-/* Photo frame */
+/* PHOTO */
 .photo-frame {
   margin-top: 20px;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
 .photo-frame img {
   width: 100%;
-  animation: zoomFade 4s ease-in-out infinite;
+  animation: kenburns 6s ease-in-out infinite;
 }
 
-@keyframes zoomFade {
-  0% { transform: scale(1); opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { transform: scale(1.1); opacity: 0; }
+@keyframes kenburns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background elements -->
-<div class="blob"></div>
-<div class="blob"></div>
-
 <div class="card">
 
 <!-- STEP 1 -->
 <div id="step1">
-  <h1>Hey Sakshi 🌸</h1>
+  <h1>Hi Sakshi</h1>
   <p>
-    I wanted to do something different this time.<br>
-    Something calm, thoughtful, and just for you.
+    This is not just a birthday page.<br>
+    It’s a quiet moment, created only for you.
   </p>
-  <button onclick="nextStep(1)">Continue ✨</button>
+  <button onclick="next(1)">BEGIN</button>
 </div>
 
 <!-- STEP 2 -->
 <div id="step2" class="hidden">
-  <h1>A Small Thought 💭</h1>
+  <h1>A Thought</h1>
   <p>
-    Birthdays aren’t just about growing older.<br>
-    They’re about celebrating the person you are,<br>
-    and the warmth you bring into lives.
+    Birthdays remind us how rare genuine people are.<br>
+    And today is about celebrating one of them.
   </p>
-  <button onclick="nextStep(2)">One More 💖</button>
+  <button onclick="next(2)">CONTINUE</button>
 </div>
 
 <!-- STEP 3 -->
 <div id="step3" class="hidden">
-  <h1>For You 💐</h1>
+  <h1>Almost There</h1>
   <p>
-    May your days be gentle,<br>
-    your dreams be fearless,<br>
-    and your heart always feel valued.
+    Take a breath.<br>
+    Something meaningful is coming.
   </p>
-  <button onclick="nextStep(3)">See Something Special 📸</button>
+  <button onclick="startCountdown()">FINAL REVEAL</button>
+</div>
+
+<!-- COUNTDOWN -->
+<div id="countdown" class="hidden">
+  <p>Final reveal in</p>
+  <div id="count">5</div>
 </div>
 
 <!-- FINAL -->
 <div id="final" class="hidden">
-  <h1>Happy Birthday Sakshi 🎂</h1>
+  <h1>Happy Birthday Sakshi</h1>
   <p>
-    You’re effortlessly special — not because you try,<br>
-    but because you’re simply you.<br><br>
-    May life always surprise you with reasons to smile,<br>
-    and may you always know how deeply appreciated you are.
+    May you always walk with confidence,<br>
+    dream without fear,<br>
+    and be surrounded by people who value your heart.
   </p>
 
   <div class="photo-frame">
     <img id="slide" src="photo1.jpg">
   </div>
 
-  <p style="margin-top:15px;">— From Shubham 💙</p>
+  <p style="margin-top:18px;">— With warmth, Shubham</p>
 </div>
 
 </div>
 
 <script>
-/* Step navigation */
-function nextStep(step) {
-  document.getElementById("step" + step).classList.add("hidden");
-  if (step < 3) {
-    document.getElementById("step" + (step + 1)).classList.remove("hidden");
-  } else {
-    document.getElementById("final").classList.remove("hidden");
-    startParticles();
-    slideshow();
-  }
+/* Stars */
+for(let i=0;i<80;i++){
+  const s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(6+Math.random()*10)+"s";
+  document.body.appendChild(s);
+}
+
+/* Steps */
+function next(step){
+  document.getElementById("step"+step).classList.add("hidden");
+  document.getElementById("step"+(step+1)).classList.remove("hidden");
+}
+
+/* Countdown */
+function startCountdown(){
+  step3.classList.add("hidden");
+  countdown.classList.remove("hidden");
+  let n=5;
+  const timer=setInterval(()=>{
+    count.innerText=n;
+    n--;
+    if(n<0){
+      clearInterval(timer);
+      countdown.classList.add("hidden");
+      final.classList.remove("hidden");
+      slideshow();
+    }
+  },1000);
 }
 
 /* Slideshow */
-const photos = ["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
-let index = 0;
-
-function slideshow() {
-  setInterval(() => {
-    index = (index + 1) % photos.length;
-    document.getElementById("slide").src = photos[index];
-  }, 4000);
-}
-
-/* Floating particles */
-function startParticles() {
-  setInterval(() => {
-    const p = document.createElement("div");
-    p.className = "particle";
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.animationDuration = (8 + Math.random() * 6) + "s";
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 14000);
-  }, 400);
+const photos=["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
+let idx=0;
+function slideshow(){
+  setInterval(()=>{
+    idx=(idx+1)%photos.length;
+    slide.src=photos[idx];
+  },5000);
 }
 </script>
 
