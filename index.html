@@ -13,32 +13,77 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #c2e9fb);
   background-size: 400% 400%;
-  animation: gradient 12s ease infinite;
+  animation: gradient 15s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
+/* Gradient animation */
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Glass Card */
+/* Floating blobs */
+.blob {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.1));
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: blobMove 18s infinite alternate ease-in-out;
+}
+
+.blob:nth-child(1) {
+  top: -100px;
+  left: -120px;
+}
+
+.blob:nth-child(2) {
+  bottom: -120px;
+  right: -100px;
+  animation-delay: 4s;
+}
+
+@keyframes blobMove {
+  from { transform: translate(0,0); }
+  to { transform: translate(120px,80px); }
+}
+
+/* Light particles */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: floatParticle 10s linear infinite;
+}
+
+@keyframes floatParticle {
+  from { transform: translateY(100vh); opacity: 0; }
+  20% { opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Card */
 .card {
   width: 90%;
   max-width: 420px;
   padding: 35px;
   border-radius: 25px;
   background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
   text-align: center;
   animation: fadeIn 1.2s ease;
+  z-index: 10;
 }
 
 @keyframes fadeIn {
@@ -49,7 +94,6 @@ body {
 h1 {
   color: #ff4d6d;
   font-weight: 600;
-  margin-bottom: 10px;
 }
 
 p {
@@ -79,7 +123,7 @@ button:hover {
   display: none;
 }
 
-/* Photo */
+/* Photo frame */
 .photo-frame {
   margin-top: 20px;
   overflow: hidden;
@@ -97,25 +141,14 @@ button:hover {
   85% { opacity: 1; }
   100% { transform: scale(1.1); opacity: 0; }
 }
-
-/* Floating light particles */
-.light {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
-  animation: float 6s linear infinite;
-}
-
-@keyframes float {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-10vh); }
-}
 </style>
 </head>
 
 <body>
+
+<!-- Background elements -->
+<div class="blob"></div>
+<div class="blob"></div>
 
 <div class="card">
 
@@ -124,7 +157,7 @@ button:hover {
   <h1>Hey Sakshi 🌸</h1>
   <p>
     I wanted to do something different this time.<br>
-    Something calm, meaningful, and just for you.
+    Something calm, thoughtful, and just for you.
   </p>
   <button onclick="nextStep(1)">Continue ✨</button>
 </div>
@@ -135,7 +168,7 @@ button:hover {
   <p>
     Birthdays aren’t just about growing older.<br>
     They’re about celebrating the person you are,<br>
-    the smiles you give, and the warmth you bring.
+    and the warmth you bring into lives.
   </p>
   <button onclick="nextStep(2)">One More 💖</button>
 </div>
@@ -171,20 +204,20 @@ button:hover {
 </div>
 
 <script>
-/* Steps */
+/* Step navigation */
 function nextStep(step) {
   document.getElementById("step" + step).classList.add("hidden");
-  if(step < 3) {
+  if (step < 3) {
     document.getElementById("step" + (step + 1)).classList.remove("hidden");
   } else {
     document.getElementById("final").classList.remove("hidden");
-    startLights();
+    startParticles();
     slideshow();
   }
 }
 
 /* Slideshow */
-const photos = ["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
+const photos = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg"];
 let index = 0;
 
 function slideshow() {
@@ -194,15 +227,15 @@ function slideshow() {
   }, 4000);
 }
 
-/* Floating lights */
-function startLights() {
+/* Floating particles */
+function startParticles() {
   setInterval(() => {
-    const light = document.createElement("div");
-    light.className = "light";
-    light.style.left = Math.random() * 100 + "vw";
-    light.style.animationDuration = (4 + Math.random() * 4) + "s";
-    document.body.appendChild(light);
-    setTimeout(() => light.remove(), 8000);
+    const p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (8 + Math.random() * 6) + "s";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 14000);
   }, 400);
 }
 </script>
