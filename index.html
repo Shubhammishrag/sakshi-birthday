@@ -21,7 +21,7 @@ body {
   color: #fff;
 }
 
-/* Soft floating lights */
+/* Floating lights */
 .light {
   position: absolute;
   width: 6px;
@@ -57,13 +57,13 @@ body {
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 34px;
+  font-size: 32px;
   margin-bottom: 14px;
 }
 
 p {
   font-size: 16px;
-  line-height: 2;
+  line-height: 1.9;
   opacity: 0.96;
 }
 
@@ -84,15 +84,9 @@ button:hover { transform: scale(1.07); }
 
 .hidden { display: none; }
 
-/* Typing */
-#typing {
-  min-height: 100px;
-  font-style: italic;
-}
-
 /* Countdown */
 #count {
-  font-size: 74px;
+  font-size: 70px;
   font-family: 'Playfair Display', serif;
   animation: pulse 1s infinite;
 }
@@ -131,28 +125,33 @@ button:hover { transform: scale(1.07); }
     I don’t know how to say this simply,<br>
     so I chose to say it beautifully 🌸
   </p>
-  <button onclick="next(1)">START ✨</button>
+  <button onclick="nextStep(1)">START ✨</button>
 </div>
 
 <!-- STEP 2 -->
 <div id="step2" class="hidden">
-  <h1>Just So You Know 💌</h1>
-  <p id="typing"></p>
-  <button onclick="next(2)">CONTINUE 💖</button>
+  <h1>Life lesson you should take from me 😎🌙</h1>
+  <p>
+    If someone’s birthday arrives 🎂<br>
+    and his or her friend is not with you,<br>
+    then you should give a treat to your friend<br>
+    without asking… okay 😌🍰
+  </p>
+  <button onclick="nextStep(2)">CONTINUE 💖</button>
 </div>
 
 <!-- STEP 3 -->
 <div id="step3" class="hidden">
-  <h1> life lesson you should take from me 😎🌙</h1>
-  <p> If someone birthday arrives and his or her friend <br>
-    not with you then you should give treat to your friend without asking ok<br>
+  <h1>Almost There 💫</h1>
+  <p>
+    Just one more click before something special 💖
   </p>
   <button onclick="startCountdown()">ONE LAST STEP 🎂</button>
 </div>
 
 <!-- COUNTDOWN -->
 <div id="countdown" class="hidden">
-  <p>For someone who deserves a beautiful moment 💖…</p>
+  <p>For someone special 💕</p>
   <div id="count">5</div>
 </div>
 
@@ -161,22 +160,35 @@ button:hover { transform: scale(1.07); }
   <h1>Happy Birthday Sakshi 🎂❤️</h1>
   <p>
     Today is about you 🌸<br><br>
-    About your smile that feels comforting,<br>
-   Just i want to say that when we meet first time <br>
-    <br>
-    we look good together as a friend or whatever you think i accept <br>
-    your saamne se mesagge na karna roast krna and bachhon type reel share karna <br>
-    <br>
-    it fell that you are a part of my life and all i say that on your birthday keep smiling <br>
-    spend your day very nicely and enjoy with your family and remember little bit me also <br>
-  <br>
-    and at last i just waant to say a very happiest birthday to uu....😘💕💕<br>
-    and i remembered your birthday this time with date so dont have fight with me from now ✨ <br>
-  <br>
-  I dont know how would like these all but i tried hope you like agar nhu bhi achi lagi to <br>
-    jabradsati achhi lagwao <br>
-<br>
-    Happiest birthdayyyyyy cutieeeeeee😘❤️💕
+
+    About your smile that feels comforting 😊<br>
+    Just I want to say that when we met for the first time,<br><br>
+
+    we looked good together as a friend<br>
+    or whatever you think — I accept 💙<br><br>
+
+    your saamne se message na karna,<br>
+    roast karna and bachhon type reels share karna 😜<br><br>
+
+    it feels that you are a part of my life,<br>
+    and all I want to say on your birthday is — keep smiling ✨<br>
+
+    spend your day nicely, enjoy with your family,<br>
+    and remember me a little bit also 💕<br><br>
+
+    and at last I just want to say<br>
+    a very happiest birthday to youuu.... 😘💕💕<br>
+
+    and yes — I remembered your birthday this time with date,<br>
+    so don’t fight with me from now 😌✨<br><br>
+
+    I don’t know how you’ll like all this,<br>
+    but I tried… hope you like it 💖<br>
+
+    agar nahi bhi achhi lagi toh<br>
+    jabardasti achhi lagwao 😁<br><br>
+
+    Happiest birthdayyyyyy cutieeeeeee 😘❤️💕
   </p>
 
   <div class="photo-frame">
@@ -200,26 +212,9 @@ setInterval(() => {
 }, 500);
 
 /* Steps */
-function next(step){
+function nextStep(step){
   document.getElementById("step"+step).classList.add("hidden");
   document.getElementById("step"+(step+1)).classList.remove("hidden");
-  if(step === 1) typeText();
-}
-
-/* Typing text */
-const message =
-"Some people enter your life quietly… 🌙\n"+
-"but somehow make everything feel brighter ✨\n"+
-"And without even realizing it,\n"+
-"they start meaning more than words can explain ❤️";
-
-let i = 0;
-function typeText(){
-  if(i < message.length){
-    typing.innerHTML += message.charAt(i);
-    i++;
-    setTimeout(typeText, 45);
-  }
 }
 
 /* Countdown */
