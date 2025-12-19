@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Sakshi 🎉</title>
+<title>Happy Birthday Sakshi ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #1b2735, #090a0f);
+  background: radial-gradient(circle at top, #2b1055, #000000);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -21,19 +21,20 @@ body {
   color: #fff;
 }
 
-/* Stars */
-.star {
+/* Soft floating lights */
+.light {
   position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  opacity: 0.8;
-  animation: starMove linear infinite;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
 }
 
-@keyframes starMove {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-10vh); }
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  30% { opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
 }
 
 /* Card */
@@ -41,57 +42,57 @@ body {
   width: 90%;
   max-width: 480px;
   padding: 45px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.08);
+  border-radius: 26px;
+  background: rgba(255,255,255,0.12);
   backdrop-filter: blur(22px);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+  box-shadow: 0 35px 90px rgba(0,0,0,0.8);
   text-align: center;
-  animation: enter 1.4s ease;
+  animation: enter 1.6s ease;
 }
 
 @keyframes enter {
-  from { opacity: 0; transform: translateY(50px); }
+  from { opacity: 0; transform: translateY(60px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 34px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 p {
   font-size: 16px;
-  line-height: 1.9;
-  opacity: 0.95;
+  line-height: 2;
+  opacity: 0.96;
 }
 
 button {
   margin-top: 30px;
-  padding: 14px 38px;
+  padding: 14px 40px;
   font-size: 14px;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
   color: white;
   cursor: pointer;
   letter-spacing: 1px;
   transition: transform 0.3s;
 }
 
-button:hover { transform: scale(1.06); }
+button:hover { transform: scale(1.07); }
 
 .hidden { display: none; }
 
 /* Typing */
 #typing {
-  min-height: 90px;
+  min-height: 100px;
   font-style: italic;
 }
 
 /* Countdown */
 #count {
-  font-size: 72px;
+  font-size: 74px;
   font-family: 'Playfair Display', serif;
   animation: pulse 1s infinite;
 }
@@ -102,9 +103,9 @@ button:hover { transform: scale(1.06); }
 
 /* Photo */
 .photo-frame {
-  margin-top: 22px;
+  margin-top: 24px;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 20px;
 }
 
 .photo-frame img {
@@ -114,7 +115,7 @@ button:hover { transform: scale(1.06); }
 
 @keyframes kenburns {
   from { transform: scale(1); }
-  to { transform: scale(1.12); }
+  to { transform: scale(1.15); }
 }
 </style>
 </head>
@@ -125,88 +126,89 @@ button:hover { transform: scale(1.06); }
 
 <!-- STEP 1 -->
 <div id="step1">
-  <h1>Hey Sakshi 🎂</h1>
+  <h1>Hey Sakshi ❤️</h1>
   <p>
-    I know this might feel unexpected,<br>
-    but I wanted to do something a little special today ✨
+    I don’t know how to say this simply,<br>
+    so I chose to say it beautifully 🌸
   </p>
-  <button onclick="next(1)">LET’S BEGIN 🎉</button>
+  <button onclick="next(1)">START ✨</button>
 </div>
 
 <!-- STEP 2 -->
 <div id="step2" class="hidden">
-  <h1>Just a Thought 💭</h1>
+  <h1>Just So You Know 💌</h1>
   <p id="typing"></p>
-  <button onclick="next(2)">KEEP GOING 💖</button>
+  <button onclick="next(2)">CONTINUE 💖</button>
 </div>
 
 <!-- STEP 3 -->
 <div id="step3" class="hidden">
-  <h1>Almost There 🕯️</h1>
+  <h1>Almost There 🌙</h1>
   <p>
-    Birthdays are not just about cake and candles 🎂<br>
-    They’re about reminding someone how special they truly are 💫
+    Some people leave a mark without trying,<br>
+    and you are one of those people ✨
   </p>
-  <button onclick="startCountdown()">FINAL SURPRISE 🎁</button>
+  <button onclick="startCountdown()">ONE LAST STEP 🎂</button>
 </div>
 
 <!-- COUNTDOWN -->
 <div id="countdown" class="hidden">
-  <p>Something beautiful is coming in…</p>
+  <p>For someone special…</p>
   <div id="count">5</div>
 </div>
 
 <!-- FINAL -->
 <div id="final" class="hidden">
-  <h1>Happy Birthday Sakshi 🎉💖</h1>
+  <h1>Happy Birthday Sakshi 🎂❤️</h1>
   <p>
-    On your special day, I just want you to know this 🌸<br><br>
-    You bring positivity without even trying,<br>
-    you make moments lighter just by being there,<br>
-    and you truly deserve all the happiness today and always ✨<br><br>
-    May this year surprise you with new dreams,<br>
-    beautiful memories, and reasons to smile every single day 😊
+    Today is about you 🌸<br><br>
+    About your smile that feels comforting,<br>
+    your presence that feels warm,<br>
+    and the way you make moments feel lighter just by being there 💖<br><br>
+    May this year bring you closer to everything you dream of,<br>
+    and may you always feel how truly special you are ✨
   </p>
 
   <div class="photo-frame">
     <img id="slide" src="photo1.jpg">
   </div>
 
-  <p style="margin-top:18px;">— From Shubham 💙</p>
+  <p style="margin-top:20px;">— With care, Shubham 💙</p>
 </div>
 
 </div>
 
 <script>
-/* Stars */
-for(let i=0;i<90;i++){
-  const s=document.createElement("div");
-  s.className="star";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=(6+Math.random()*10)+"s";
-  document.body.appendChild(s);
-}
+/* Floating lights */
+setInterval(() => {
+  const l = document.createElement("div");
+  l.className = "light";
+  l.style.left = Math.random() * 100 + "vw";
+  l.style.animationDuration = (6 + Math.random() * 6) + "s";
+  document.body.appendChild(l);
+  setTimeout(() => l.remove(), 12000);
+}, 500);
 
 /* Steps */
 function next(step){
   document.getElementById("step"+step).classList.add("hidden");
   document.getElementById("step"+(step+1)).classList.remove("hidden");
-  if(step===1) typeText();
+  if(step === 1) typeText();
 }
 
 /* Typing text */
-const message = 
-"Some people make days brighter 🌤️,\n"+
-"some make conversations warmer 💬,\n"+
-"and some, without even knowing,\n"+
-"leave a beautiful impact just by being themselves 💖";
+const message =
+"Some people enter your life quietly… 🌙\n"+
+"but somehow make everything feel brighter ✨\n"+
+"And without even realizing it,\n"+
+"they start meaning more than words can explain ❤️";
 
-let i=0;
+let i = 0;
 function typeText(){
-  if(i<message.length){
+  if(i < message.length){
     typing.innerHTML += message.charAt(i);
     i++;
-    setTimeout(typeText,40);
+    setTimeout(typeText, 45);
   }
 }
 
@@ -214,27 +216,27 @@ function typeText(){
 function startCountdown(){
   step3.classList.add("hidden");
   countdown.classList.remove("hidden");
-  let n=5;
-  const timer=setInterval(()=>{
-    count.innerText=n;
+  let n = 5;
+  const timer = setInterval(() => {
+    count.innerText = n;
     n--;
-    if(n<0){
+    if(n < 0){
       clearInterval(timer);
       countdown.classList.add("hidden");
       final.classList.remove("hidden");
       slideshow();
     }
-  },1000);
+  }, 1000);
 }
 
 /* Slideshow */
-const photos=["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
-let idx=0;
+const photos = ["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
+let idx = 0;
 function slideshow(){
-  setInterval(()=>{
-    idx=(idx+1)%photos.length;
-    slide.src=photos[idx];
-  },5000);
+  setInterval(() => {
+    idx = (idx + 1) % photos.length;
+    slide.src = photos[idx];
+  }, 5000);
 }
 </script>
 
