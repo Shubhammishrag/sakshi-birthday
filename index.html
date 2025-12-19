@@ -22,20 +22,13 @@ body {
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  animation: pop 1s ease;
+  max-width: 420px;
+  animation: pop 0.8s ease;
   z-index: 10;
-  max-width: 400px;
 }
 
-h1 {
-  color: #ff4d6d;
-}
-
-p {
-  color: #555;
-  font-size: 18px;
-  line-height: 1.6;
-}
+h1 { color: #ff4d6d; }
+p { color: #555; font-size: 18px; line-height: 1.6; }
 
 button {
   margin-top: 20px;
@@ -47,53 +40,62 @@ button {
   color: white;
   cursor: pointer;
 }
+button:hover { background: #e63950; }
 
-button:hover {
-  background: #e63950;
-}
-
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
 
 @keyframes pop {
-  from {transform: scale(0.7); opacity: 0;}
-  to {transform: scale(1); opacity: 1;}
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
-/* Animations */
+/* Typing cursor */
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Floating animations */
 .heart, .balloon {
   position: absolute;
-  font-size: 25px;
+  font-size: 26px;
 }
 
-.heart {
-  animation: float 4s linear infinite;
-}
-
-.balloon {
-  bottom: -100px;
-  animation: rise 6s linear infinite;
-}
+.heart { animation: float 4s linear infinite; }
+.balloon { bottom: -100px; animation: rise 6s linear infinite; }
 
 @keyframes float {
-  from {transform: translateY(100vh);}
-  to {transform: translateY(-10vh);}
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
 }
 
 @keyframes rise {
-  to {transform: translateY(-120vh);}
+  to { transform: translateY(-120vh); }
 }
 
+/* Confetti */
 .confetti {
   position: fixed;
   width: 8px;
   height: 8px;
   animation: fall 3s linear forwards;
 }
-
 @keyframes fall {
-  to {transform: translateY(110vh) rotate(360deg);}
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Countdown */
+#count {
+  font-size: 60px;
+  color: #ff4d6d;
+}
+
+/* Slideshow */
+.slideshow img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 15px;
 }
 </style>
 </head>
@@ -106,67 +108,106 @@ button:hover {
 
 <div class="card">
 
-  <!-- STEP 1 -->
-  <div id="step1">
-    <h1>Hey Sakshi 😊</h1>
-    <p>I made something special just for you 💝</p>
-    <button onclick="step2()">Click here for surprise 🎁</button>
+<!-- STEP 1 -->
+<div id="step1">
+  <h1>Hey Sakshi 😊</h1>
+  <p>I made something special just for you 💝</p>
+  <button onclick="goStep2()">Click here for surprise 🎁</button>
+</div>
+
+<!-- STEP 2 (Typing) -->
+<div id="step2" class="hidden">
+  <h1>✨ Just a moment ✨</h1>
+  <p id="typingText"></p>
+  <button onclick="goStep3()">Continue 💫</button>
+</div>
+
+<!-- STEP 3 -->
+<div id="step3" class="hidden">
+  <h1>💖 Almost there 💖</h1>
+  <p>
+    This isn’t just a birthday wish,<br>
+    it’s something made from the heart 🌸
+  </p>
+  <button onclick="startCountdown()">Final Surprise 🎂</button>
+</div>
+
+<!-- COUNTDOWN -->
+<div id="countdown" class="hidden">
+  <h1>🎉 Get Ready 🎉</h1>
+  <p>Final surprise in...</p>
+  <h1 id="count">5</h1>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="hidden">
+  <h1>🎂 Happy Birthday Sakshi 🎂</h1>
+  <p>
+    May your smile always shine ✨<br>
+    May happiness follow you everywhere 💕<br>
+    You truly deserve all the love 💖
+  </p>
+
+  <div class="slideshow">
+    <img id="slide" src="photo1.jpg">
   </div>
 
-  <!-- STEP 2 -->
-  <div id="step2" class="hidden">
-    <h1>✨ Guess what ✨</h1>
-    <p>
-      Someone remembered your special day<br>
-      and wanted to make you smile 💖
-    </p>
-    <button onclick="step3()">One more surprise 😍</button>
-  </div>
-
-  <!-- STEP 3 -->
-  <div id="step3" class="hidden">
-    <h1>💫 Almost there 💫</h1>
-    <p>
-      This is not just a wish,<br>
-      it’s a reminder of how amazing you are 🌸
-    </p>
-    <button onclick="finalStep()">Final surprise 💖</button>
-  </div>
-
-  <!-- FINAL -->
-  <div id="final" class="hidden">
-    <h1>🎂 Happy Birthday Sakshi 🎂</h1>
-    <p>
-      Sakshi 🌸,<br>
-      May your smile always shine ✨<br>
-      May your dreams come true 💕<br>
-      You truly deserve all the happiness 💖
-    </p>
-    <p>— From Shubham 💙</p>
-  </div>
+  <p>— From Shubham 💙</p>
+</div>
 
 </div>
 
 <script>
-function step2() {
-  document.getElementById("step1").classList.add("hidden");
-  document.getElementById("step2").classList.remove("hidden");
+/* Typing effect */
+const text = "Someone remembered your special day...\nSomeone wanted to make you smile...\nBecause you truly matter 💖";
+let i = 0;
+
+function goStep2() {
+  step1.classList.add("hidden");
+  step2.classList.remove("hidden");
+  typeEffect();
 }
 
-function step3() {
-  document.getElementById("step2").classList.add("hidden");
-  document.getElementById("step3").classList.remove("hidden");
+function typeEffect() {
+  if (i < text.length) {
+    typingText.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  }
 }
 
+function goStep3() {
+  step2.classList.add("hidden");
+  step3.classList.remove("hidden");
+}
+
+/* Countdown */
+function startCountdown() {
+  step3.classList.add("hidden");
+  countdown.classList.remove("hidden");
+  let num = 5;
+  const timer = setInterval(() => {
+    count.innerText = num;
+    num--;
+    if (num < 0) {
+      clearInterval(timer);
+      countdown.classList.add("hidden");
+      finalStep();
+    }
+  }, 1000);
+}
+
+/* Final */
 function finalStep() {
-  document.getElementById("step3").classList.add("hidden");
-  document.getElementById("final").classList.remove("hidden");
-  document.getElementById("music").play();
+  final.classList.remove("hidden");
+  music.play();
   hearts();
   balloons();
   confetti();
+  slideshow();
 }
 
+/* Effects */
 function hearts() {
   setInterval(() => {
     const h = document.createElement("div");
@@ -200,6 +241,18 @@ function confetti() {
     setTimeout(() => c.remove(), 3000);
   }
 }
+
+/* Slideshow */
+const photos = ["photo(1).jpg","photo(2).jpg","photo(3).jpg","photo(4).jpg"];
+let index = 0;
+
+function slideshow() {
+  setInterval(() => {
+    index = (index + 1) % photos.length;
+    document.getElementById("slide").src = photos[index];
+  }, 2500);
+}
 </script>
 
 </body>
+</html>
